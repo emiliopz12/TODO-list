@@ -29,18 +29,27 @@
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+			<h1>Todo list <span class="label label-info">{{ todos.length }}</span></h1>
 		</div>
 
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
+			<div ">
 
+				<div class="row">
+					<button type="button" class="btn btn-primary btn-lg" ng-click="createTodo()">Pending</button>
+
+					<button type="button" class="btn btn-primary btn-lg" ng-click="createTodo()">Overdue</button>
+
+				</div>
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-					</label>
+				<div ng-repeat="todo in todos">
+				<th>
+					<td> { todo.name } </td>
+					<td> { todo.description }</td>
+					<td> { todo.date }</td>
+					<td> { todo.priority }</td>
+				</th>
 				</div>
 
 			</div>
@@ -53,26 +62,26 @@
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="name" ng-model="formData.text">
+						<input type="text" class="form-control input-lg text-center" placeholder="name" ng-model="formData.name">
 					
 						<input type="text" class="form-control input-lg text-center" placeholder="description" ng-model="formData.description">
 						
-						<input type="number" class="form-control input-lg text-center" placeholder="priority" ng-model="formData.priority">
+						<label> Priority </label>
+						<select ng-model="formData.priority">
+							<option ng-repeat="n in [1,2,3,4,5]" value="{{$index+1}}" >{{$index+1}}</option>
+						</select>
 						
-						<input type="date" class="form-control input-lg text-center" placeholder="date" ng-model="formData.date">
+						<input type="date" class="form-control input-lg text-center" ng-model="formData.date">
 
 					</div>
 
 					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add Task</button>
 				</form>
 			</div>
 		</div>
 
-		<div class="text-center text-muted">
-			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
-		</div>
+
 
 	</div>
 

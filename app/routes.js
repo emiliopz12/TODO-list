@@ -4,8 +4,9 @@ module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
 	// get all todos
-	app.get('/api/todos', function(req, res) {
+	app.get('/api/task', function(req, res) {
 
+		console.log('accediendo a todos')
 		// use mongoose to get all todos in the database
 		Todo.find(function(err, todos) {
 
@@ -18,12 +19,16 @@ module.exports = function(app) {
 	});
 
 	// create todo and send back all todos after creation
-	app.post('/api/todos', function(req, res) {
+	app.post('/api/task', function(req, res) {
 
+		console.log('creando todo')
+		
 		// create a todo, information comes from AJAX request from Angular
 		Todo.create({
-			text : req.body.text,
-			done : false
+			 name : req.body.name
+			// description : req.body.description,
+			// date : req.body.date,
+			// priority: req.body.priority
 		}, function(err, todo) {
 			if (err)
 				res.send(err);
@@ -37,9 +42,23 @@ module.exports = function(app) {
 		});
 
 	});
+	
+	
+
+		
+	// delete a todo
+	app.get('/api/task/:todo_id', function(req, res) {
+			
+			Juego.find({"player.name": req.params.player_name }, {"Laberinto": 0},function(err, bear) {
+			if (err)
+				res.send(JSON.parse(err));
+			res.json(bear);
+			});
+		
+	});
 
 	// delete a todo
-	app.delete('/api/todos/:todo_id', function(req, res) {
+	app.delete('/api/task/:todo_id', function(req, res) {
 		Todo.remove({
 			_id : req.params.todo_id
 		}, function(err, todo) {

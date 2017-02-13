@@ -23,6 +23,8 @@ function mainController($scope, $http) {
 			.error(function(data) {
 				console.log('Error: ' + data);
 			});
+			
+			console.log($scope.formData);
 	};
 
 	// delete a todo after checking it

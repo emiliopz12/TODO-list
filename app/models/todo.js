@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('Todo', {
-	name : String,
-	description : String,
-	date : Boolean,
-	number: Number
+	 name : String
+	// description : String,
+	// date : String,
+	// priority: String
 });
