@@ -6,7 +6,7 @@ module.exports = function(app) {
 
 	app.get('/api/task', function(req, res) {
 
-		console.log('accediendo a todos')
+		console.log('accediendo a task')
 		
 		Todo.find(function(err, todos) {
 
@@ -19,7 +19,7 @@ module.exports = function(app) {
 
 	app.post('/api/task', function(req, res) {
 
-		console.log('creando todo')
+		console.log('creando task')
 		
 		Todo.create({
 			 name : req.body.name,
@@ -41,7 +41,7 @@ module.exports = function(app) {
 		
 	app.get('/api/task/:todo_id', function(req, res) {
 			
-			Juego.find({"player.name": req.params.player_name }, {"Laberinto": 0},function(err, bear) {
+			Juego.find({"task.id": req.params.task_id }, {"Laberinto": 0},function(err, bear) {
 			if (err)
 				res.send(JSON.parse(err));
 			res.json(bear);

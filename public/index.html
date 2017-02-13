@@ -32,7 +32,7 @@
 			<h2>Todo list <span class="label label-info">{{ todos.length }}</span></h2>
 		</div>
 
-		<!-- TODO LIST -->
+		<!-- TASK LIST -->
 		<div id="todo-list" class="row">
 			<div ">
 
@@ -41,7 +41,7 @@
 
 					<button type="button" class="btn btn-primary btn-lg" ng-click="showOverdue()">Overdue</button>
 				</div>
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
+				
 				<table>
 				<th >
 						<td style='padding: 12px;'> Name </td>
@@ -63,13 +63,12 @@
 			</div>
 		</div>
 
-		<!-- FORM TO CREATE TODOS -->
+		<!-- FORM TO CREATE TASK -->
 		<div id="todo-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
 					<div class="form-group">
 
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
 						<input type="text" class="form-control input-lg text-center" placeholder="name" ng-model="formData.name">
 					
 						<input type="text" class="form-control input-lg text-center" placeholder="description" ng-model="formData.description">
@@ -83,8 +82,8 @@
 
 					</div>
 
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add Task</button>
+					
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTask()">Add Task</button>
 				</form>
 			</div>
 		</div>

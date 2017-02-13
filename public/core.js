@@ -11,7 +11,7 @@ function mainController($scope, $http) {
 			console.log('Error: ' + data);
 		});
 
-	$scope.createTodo = function() {
+	$scope.createTask = function() {
 		$http.post('/api/task', $scope.formData)
 			.success(function(data) {
 				$scope.formData = {}; // clear the form so our user is ready to enter another
