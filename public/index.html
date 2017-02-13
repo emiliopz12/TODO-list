@@ -1,13 +1,13 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchTodo">
+<html ng-app="Todo">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-	<title>Node/Angular Todo App</title>
+	<title>Todo App</title>
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
@@ -29,7 +29,7 @@
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>Todo list <span class="label label-info">{{ todos.length }}</span></h1>
+			<h2>Todo list <span class="label label-info">{{ todos.length }}</span></h2>
 		</div>
 
 		<!-- TODO LIST -->
@@ -37,20 +37,28 @@
 			<div ">
 
 				<div class="row">
-					<button type="button" class="btn btn-primary btn-lg" ng-click="createTodo()">Pending</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="showPending()">Pending</button>
 
-					<button type="button" class="btn btn-primary btn-lg" ng-click="createTodo()">Overdue</button>
-
+					<button type="button" class="btn btn-primary btn-lg" ng-click="showOverdue()">Overdue</button>
 				</div>
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div ng-repeat="todo in todos">
-				<th>
-					<td> { todo.name } </td>
-					<td> { todo.description }</td>
-					<td> { todo.date }</td>
-					<td> { todo.priority }</td>
+				<table>
+				<th >
+						<td style='padding: 12px;'> Name </td>
+						<td style='padding: 12px;'> Description </td>
+						<td style='padding: 12px;'> Date </td>
+						<td style='padding: 12px;'> Priority </td>
 				</th>
-				</div>
+			
+					<tr ng-repeat="todo in todos">
+						<td> { todo.name }  </td>
+						<td> { todo.description } </td>
+						<td> { todo.date } </td>
+						<td> { todo.priority } </td>
+					</tr>
+			
+				
+				</table>
 
 			</div>
 		</div>

@@ -1,10 +1,9 @@
-var scotchTodo = angular.module('scotchTodo', []);
+var Todo = angular.module('Todo', []);
 
 function mainController($scope, $http) {
 	$scope.formData = {};
 
-	// when landing on the page, get all todos and show them
-	$http.get('/api/todos')
+	$http.get('/api/task')
 		.success(function(data) {
 			$scope.todos = data;
 		})
@@ -12,9 +11,8 @@ function mainController($scope, $http) {
 			console.log('Error: ' + data);
 		});
 
-	// when submitting the add form, send the text to the node API
 	$scope.createTodo = function() {
-		$http.post('/api/todos', $scope.formData)
+		$http.post('/api/task', $scope.formData)
 			.success(function(data) {
 				$scope.formData = {}; // clear the form so our user is ready to enter another
 				$scope.todos = data;
@@ -24,18 +22,17 @@ function mainController($scope, $http) {
 				console.log('Error: ' + data);
 			});
 			
-			console.log($scope.formData);
 	};
 
-	// delete a todo after checking it
-	$scope.deleteTodo = function(id) {
-		$http.delete('/api/todos/' + id)
-			.success(function(data) {
-				$scope.todos = data;
-			})
-			.error(function(data) {
-				console.log('Error: ' + data);
-			});
-	};
+	// // delete a todo after checking it
+	// $scope.deleteTodo = function(id) {
+		// $http.delete('/api/delete/' + id)
+			// .success(function(data) {
+				// $scope.todos = data;
+			// })
+			// .error(function(data) {
+				// console.log('Error: ' + data);
+			// });
+	// };
 
 }
